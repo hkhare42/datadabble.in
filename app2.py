@@ -219,7 +219,7 @@ app.layout = html.Div(id='bodydiv2', style = {'width': '96vw'}, children = [
                                 clearable=False),
     table.DataTable(
         id='table_position',
-        style_table={'width': '45vw', 'display':'inline-block', 'float':'left'},
+        style_table={'width': '55vw', 'position':'absolute', 'left':'0vw'},
         style_cell={'fontFamily': 'Arial'},
         columns=[
             {"name": i, "id": i} for i in ['Team','Matches',
@@ -228,7 +228,7 @@ app.layout = html.Div(id='bodydiv2', style = {'width': '96vw'}, children = [
         ],
         sorting=True,
     ),
-    dcc.Graph(id='plot_position', style={'width': '30vw', 'display':'inline-block', 'float':'left', 'height': '80vh'},
+    dcc.Graph(id='plot_position', style={'width': '30vw', 'position':'absolute', 'left':'55vw', 'height': '80vh'},
         config={'displayModeBar': False})
 ])
 
