@@ -202,14 +202,15 @@ app.title = 'Schedule-adjusted league tables'
 app.css.append_css({"external_url": "https://codepen.io/hkhare42/pen/eQzWNy.css"})
 
 app.layout = html.Div(id='bodydiv2', style = {'width': '96vw'}, children = [
-    html.P(className='para', children = ['Idea and methodology for this has been developed by Constantinos Chappas.',
-        html.A(href='https://twitter.com/cchappas', target="_blank", children='@cchappas', style={'color': 'Blue'})]),
-    html.P(className='para', children = ['Read more about it in his StatsBomb article here: ',
-        html.A(href='https://statsbomb.com/2018/11/introducing-the-schedule-adjusted-league-table/', target="_blank", 
+    html.Ul([
+        html.Li(children = ['Idea and methodology for this has been developed by Constantinos Chappas.',
+            html.A(href='https://twitter.com/cchappas', target="_blank", children='@cchappas', style={'color': 'Blue'})]),
+        html.Li(children = ['Read more about it in his StatsBomb article here: ',
+            html.A(href='https://statsbomb.com/2018/11/introducing-the-schedule-adjusted-league-table/', target="_blank", 
             children='Link to article', style={'color': 'Blue'})]),
-    html.P(className='para', children = ['Data used for this is being fetched from: ',
-        html.A(href='http://www.football-data.co.uk/', target="_blank", 
-            children='www.football-data.co.uk', style={'color': 'Blue'})]),
+        html.Li(children = ['Data used for this is being fetched from: ',
+            html.A(href='http://www.football-data.co.uk/', target="_blank", 
+            children='www.football-data.co.uk', style={'color': 'Blue'})])]),
     dcc.Dropdown(id='dropdown_country', style={'width': '25vw'}, options=
                             [{'label':country, 'value':country} 
                                 for country in list(league_codes.keys())], value='England',
