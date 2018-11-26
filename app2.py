@@ -185,7 +185,7 @@ def create_position_plot(combined_table):
                         margin = {
                             't': 50,
                             'r': 0,
-                            'l': 0,
+                            'l': 50,
                             'b': 0 
                         }
                         )
