@@ -203,33 +203,33 @@ shots_df.loc[:, 'team_type'] = shots_df.apply(lambda row: 'home' if row['team'] 
 shots_df.loc[:, 'shot_color'] = np.where(shots_df.outcome == 'Goal', 'black', shots_df.team_type.map(team_colors))
 
 # create passing dataframe
-passing = events[events.event_type == 'Pass']
+passing_mask = (events.event_type == 'Pass')
 
 pass_dic = {'id': None,
            'name': None}
 
 passing_df = pd.DataFrame(
                 list(zip(
-                    passing.player_name,
-                    passing.player_id,
-                    passing.period,
-                    passing.minute,
-                    passing.second,
-                    passing.location,
-                    passing.location.apply(lambda x: x[0]),
-                    passing.location.apply(lambda x: x[1]),
-                    passing.team,
-                    passing['pass'].apply(lambda x: x.get('recipient', pass_dic)['id']),
-                    passing['pass'].apply(lambda x: x.get('recipient', pass_dic)['name']),
-                    passing['pass'].apply(lambda x: x['height']['name']),
-                    passing['pass'].apply(lambda x: x['length']),
-                    passing['pass'].apply(lambda x: (x['angle'] * 180) / 3.14),
-                    passing['pass'].apply(lambda x: x.get('cross', 0)),
-                    passing['pass'].apply(lambda x: x.get('assisted_shot_id', 0)),
-                    passing['pass'].apply(lambda x: x.get('goal_assist', False)),
-                    passing.possession,
-                    passing['pass'].apply(lambda x: x.get('outcome', pass_dic)['name']),
-                    passing.match_id
+                    events[passing_mask].player_name,
+                    events[passing_mask].player_id,
+                    events[passing_mask].period,
+                    events[passing_mask].minute,
+                    events[passing_mask].second,
+                    events[passing_mask].location,
+                    events[passing_mask].location.apply(lambda x: x[0]),
+                    events[passing_mask].location.apply(lambda x: x[1]),
+                    events[passing_mask].team,
+                    events[passing_mask]['pass'].apply(lambda x: x.get('recipient', pass_dic)['id']),
+                    events[passing_mask]['pass'].apply(lambda x: x.get('recipient', pass_dic)['name']),
+                    events[passing_mask]['pass'].apply(lambda x: x['height']['name']),
+                    events[passing_mask]['pass'].apply(lambda x: x['length']),
+                    events[passing_mask]['pass'].apply(lambda x: (x['angle'] * 180) / 3.14),
+                    events[passing_mask]['pass'].apply(lambda x: x.get('cross', 0)),
+                    events[passing_mask]['pass'].apply(lambda x: x.get('assisted_shot_id', 0)),
+                    events[passing_mask]['pass'].apply(lambda x: x.get('goal_assist', False)),
+                    events[passing_mask].possession,
+                    events[passing_mask]['pass'].apply(lambda x: x.get('outcome', pass_dic)['name']),
+                    events[passing_mask].match_id
                     )), columns=['name','id','period','minute','seconds',
                                  'location','x_pos','y_pos','team',
                                  'receiver_id','receiver_name',
@@ -285,21 +285,21 @@ disp_table = pass_stats.join(xg_stats).fillna(0).reset_index()
 
 mask = (~events.play_pattern.isin(['From Free Kick', 'From Corner']))
 
-location = events[mask & (pd.notnull(events.player_id)) & (pd.notnull(events.location))]
+location_mask = (mask & (pd.notnull(events.player_id)) & (pd.notnull(events.location)))
 
 location_df = pd.DataFrame(
                     list(zip(
-                        location.player_name,
-                        location.player_id,
-                        location.period,
-                        location.minute,
-                        location.second,
-                        location.location,
-                        location.location.apply(lambda x: x[0]),
-                        location.location.apply(lambda x: x[1]),
-                        location.team,
-                        location.event_type,
-                        location.match_id
+                        events[location_mask].player_name,
+                        events[location_mask].player_id,
+                        events[location_mask].period,
+                        events[location_mask].minute,
+                        events[location_mask].second,
+                        events[location_mask].location,
+                        events[location_mask].location.apply(lambda x: x[0]),
+                        events[location_mask].location.apply(lambda x: x[1]),
+                        events[location_mask].team,
+                        events[location_mask].event_type,
+                        events[location_mask].match_id
                         )), columns=['name','id','period','minute','seconds',
                                      'location','x_pos','y_pos','team','event','match_id'])
 
