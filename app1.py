@@ -1629,7 +1629,7 @@ app.layout = html.Div(id='bodydiv', children = [
                                         html.A(href='https://datadabble.blogspot.com/2018/11/fifa-world-cup-2018-match-explorer.html', target="_blank", children='Link to Blog Post',
                                                className='modal-link')
                                         ])
-                                    ]),
+                                    ], className='model-text'),
                                 html.Div(className='button-wrapper', children=[
                                     html.Button('Next', id='modal-next-button-1', n_clicks=0, className='guide-buttons'),
                                     html.Button('Skip Guide', id='modal-close-button', n_clicks=0, className='guide-buttons')
@@ -1644,7 +1644,8 @@ app.layout = html.Div(id='bodydiv', children = [
                                     html.Li('Match Selection Dropdown: (All 64 games available)'),
                                     html.Li('Light/Dark theme switcher'),
                                     html.Li('Match Score and details'),
-                                    html.Li('A brief explanation of xG (Expected Goals)')]),
+                                    html.Li('A brief explanation of xG (Expected Goals)')
+                                    ], className='model-text'),
                                 html.Div(className='button-wrapper', children=[
                                     html.Button('Next', id='modal-next-button-2', n_clicks=0, className='guide-buttons')
                                 ])
@@ -1657,7 +1658,7 @@ app.layout = html.Div(id='bodydiv', children = [
                                     html.Li(modal_3_text),
                                     html.Li('Double clicking the plots/clicking on home button next to the charts resets the view.'),
                                     html.Li('Hover over the data points to get additional shot details and click & drag on the shot plot to zoom in.'),
-                                    ]),
+                                    ], className='model-text'),
                                 html.Div(className='button-wrapper', children=[
                                     html.Button('Next', id='modal-next-button-3', n_clicks=0, className='guide-buttons')
                                 ])])
@@ -1670,7 +1671,7 @@ app.layout = html.Div(id='bodydiv', children = [
                                     html.Li(modal_4_text_2),
                                     html.Li(modal_4_text_3),
                                     html.Li(modal_4_text_4)
-                                    ]),
+                                    ], className='model-text'),
                                 html.Div(className='button-wrapper', children=[
                                     html.Button('Next', id='modal-next-button-4', n_clicks=0, className='guide-buttons')
                                 ])])
