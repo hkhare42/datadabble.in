@@ -1487,6 +1487,43 @@ how_is_it_worked_out = (
     "the pitch during a particular phase of play. The factors taken into "
     "account when assessing the quality of a chance include:")
 
+modal_3_text = ("Selecting a time range (click and drag horizontally) in the xG Chart "
+                "allows the user to filter the two charts below so that they show shots and team "
+                "performance from the selected duration only.")
+
+modal_4_text_1 = ("The passing network maps show the team on the left attack from bottom to top, and "
+                  "the team on the right the other way round.")
+
+modal_4_text_2 = ("Clicking on a player bubble in the passing network map "
+                  "pops up details about the player's performance in the Player Profile "
+                  "section above it.") 
+ 
+modal_4_text_3 = ("Players’ passing angles and directions are illustrated through the radar "
+                  "plot, and are synced up directionally with the passing network map. A player playing on "
+                  "the right can be seen making all passes towards the left, and a goalkeeper "
+                  "can be seen making most passes in front. The color of the wedges indicates "
+                  "the average pass length. Green to Red: Short to Long pass.")
+
+modal_4_text_4 = ("The size of player bubbles and thickness, opacity of passing lines is proportional "
+                  "to the number of passes player was involved in.")
+
+modal_1_text_1 = ("Welcome to the FIFA WC2018 Match Explorer. Here is a short "
+                  "navigation guide that'll quickly acquaint you with the main "
+                  "interactive features of this visualization.")
+
+modal_1_text_2 = ("You can find detailed information about the features and "
+                  "development of this visualization in an accompanying blog post here: ")
+
+modal_5_text_1 = ("The References section contains links for the data used, GitHub repo "
+                  "containing the code for creating this visualization, accompanying blog "
+                  "post with details about the development process, and articles "
+                  "explaining xG metrics in more detail.")
+
+up_arrow = get_as_base64('up_arrow_icon')
+down_arrow = get_as_base64('down_arrow_icon')
+right_arrow = get_as_base64('right_arrow_icon')
+left_arrow = get_as_base64('left_arrow_icon')
+
 from server import server
 
 app = dash.Dash(name='app1', sharing=True, server=server)
