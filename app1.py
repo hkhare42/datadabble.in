@@ -1581,7 +1581,121 @@ app.layout = html.Div(id='bodydiv', children = [
                                 html.Li("All analysis was carried out using Python data stack. Visualization realized with the help of Plotly's Dash framework."),
                                         ])
                                 ])),
+                    html.Div(className='modal', id='modal-1',  children=[
+                          html.Div(className='modal-content', id='modal-content-1', children=[
+                                html.H2(children='FIFA WORLD CUP 2018 MATCH EXPLORER'),
+                                html.Hr(),
+                                html.Ul([
+                                    html.Li(modal_1_text_1),
+                                    html.Li([
+                                        modal_1_text_2,
+                                        html.A(href='https://datadabble.blogspot.com/2018/11/fifa-world-cup-2018-match-explorer.html', target="_blank", children='Link to Blog Post',
+                                               className='modal-link')
+                                        ])
+                                    ]),
+                                html.Div(className='button-wrapper', children=[
+                                    html.Button('Next', id='modal-next-button-1', n_clicks=0, className='guide-buttons'),
+                                    html.Button('Skip Guide', id='modal-close-button', n_clicks=0, className='guide-buttons')
+                                ])
+                                ])
+                          ]),
+                    html.Div(className='modal', id='modal-2',  children=[
+                          html.Img(className='arrow animated bounce-y', id='uarrow', src='data:image/png;base64,{}'.format(up_arrow)),
+                          html.Div(className='modal-content', id='modal-content-2', children=[
+                                html.P("You can click on the Information Bar to access the following features:", className='guide_p'),
+                                html.Ul(children=[
+                                    html.Li('Match Selection Dropdown: (All 64 games available)'),
+                                    html.Li('Light/Dark theme switcher'),
+                                    html.Li('Match Score and details'),
+                                    html.Li('A brief explanation of xG (Expected Goals)')]),
+                                html.Div(className='button-wrapper', children=[
+                                    html.Button('Next', id='modal-next-button-2', n_clicks=0, className='guide-buttons')
+                                ])
+                                ])
+                          ]),
+                    html.Div(className='modal', id='modal-3',  children=[
+                          html.Img(className='arrow animated bounce-x', id='larrow', src='data:image/png;base64,{}'.format(left_arrow)),
+                          html.Div(className='modal-content', id='modal-content-3', children=[
+                                html.Ul([
+                                    html.Li(modal_3_text),
+                                    html.Li('Double clicking the plots/clicking on home button next to the charts resets the view.'),
+                                    html.Li('Hover over the data points to get additional shot details and click & drag on the shot plot to zoom in.'),
+                                    ]),
+                                html.Div(className='button-wrapper', children=[
+                                    html.Button('Next', id='modal-next-button-3', n_clicks=0, className='guide-buttons')
+                                ])])
+                          ]),
+                    html.Div(className='modal', id='modal-4',  children=[
+                          html.Img(className='arrow animated bounce-x', id='rarrow', src='data:image/png;base64,{}'.format(right_arrow)),
+                          html.Div(className='modal-content', id='modal-content-4', children=[
+                                html.Ul([
+                                    html.Li(modal_4_text_1),
+                                    html.Li(modal_4_text_2),
+                                    html.Li(modal_4_text_3),
+                                    html.Li(modal_4_text_4)
+                                    ]),
+                                html.Div(className='button-wrapper', children=[
+                                    html.Button('Next', id='modal-next-button-4', n_clicks=0, className='guide-buttons')
+                                ])])
+                          ]),
+                    html.Div(className='modal', id='modal-5',  children=[
+                          html.Div(className='modal-content', id='modal-content-5', children=[
+                                html.Img(className='arrow animated bounce-y', id='darrow', src='data:image/png;base64,{}'.format(down_arrow)),
+                                html.P(modal_5_text_1, className='guide_p'),
+                                html.Div(className='button-wrapper', children=[
+                                    html.Button('Finish', id='modal-finish-button', n_clicks=0, className='guide-buttons')
+                                ])])
+                          ]),
                     html.Div(id='theme_div', style={'display': 'none'})])
+
+
+@app.callback(
+            Output('modal-1', 'style'),
+            [Input('modal-next-button-1', 'n_clicks'),
+             Input('modal-close-button', 'n_clicks')])
+def trigger_modal_1(n, p):
+    if (n > 0) or (p > 0):
+        return {'display': 'none'}
+
+@app.callback(
+            Output('modal-2', 'style'),
+            [Input('modal-next-button-2', 'n_clicks'),
+             Input('modal-next-button-1', 'n_clicks')])
+def trigger_modal_2(n, p):
+    if n > 0:
+        return {'display': 'none'}
+    if p > 0:
+        return {'display': 'block'}
+
+@app.callback(
+            Output('modal-3', 'style'),
+            [Input('modal-next-button-3', 'n_clicks'),
+             Input('modal-next-button-2', 'n_clicks')])
+def trigger_modal_3(n, p):
+    if n > 0:
+        return {'display': 'none'}
+    if p > 0:
+        return {'display': 'block'}
+
+@app.callback(
+            Output('modal-4', 'style'),
+            [Input('modal-next-button-4', 'n_clicks'),
+             Input('modal-next-button-3', 'n_clicks')])
+def trigger_modal_4(n, p):
+    if n > 0:
+        return {'display': 'none'}
+    if p > 0:
+        return {'display': 'block'}
+
+@app.callback(
+            Output('modal-5', 'style'),
+            [Input('modal-finish-button', 'n_clicks'),
+             Input('modal-next-button-4', 'n_clicks')])
+def trigger_modal_5(n, p):
+    if n > 0:
+        return {'display': 'none'}
+    if p > 0:
+        return {'display': 'block'}
 
 @app.callback(
             Output('theme_switcher', 'children'),
